@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Auth Login Illustration — 欢迎手势 / 中性教学场景兜底
+  P0 fallback: 主色渐变 + 几何形 + Mandarly 信封 logo
+  P2 替换: 由设计同学补品牌插画(老师头像组 / 教学场景)
+-->
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mandarly Login">
+  <defs>
+    <linearGradient id="loginGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFC34D"/>
+      <stop offset="100%" stop-color="#AC722C"/>
+    </linearGradient>
+    <linearGradient id="loginSoft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF6E5"/>
+      <stop offset="100%" stop-color="#FFE3A8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景气泡 -->
+  <circle cx="320" cy="80" r="50" fill="url(#loginSoft)" opacity="0.7"/>
+  <circle cx="80" cy="320" r="68" fill="url(#loginSoft)" opacity="0.55"/>
+
+  <!-- 主圆 -->
+  <circle cx="200" cy="200" r="148" fill="url(#loginGrad)" opacity="0.92"/>
+
+  <!-- 次圆装饰 -->
+  <circle cx="290" cy="140" r="32" fill="#D09A4C" opacity="0.55"/>
+  <circle cx="120" cy="270" r="22" fill="#FFF6E5" opacity="0.85"/>
+
+  <!-- Mandarly 信封 logo(简化) -->
+  <g transform="translate(140 168)">
+    <rect x="0" y="0" width="120" height="80" rx="10" fill="#FFFFFF" stroke="#AC722C" stroke-width="3"/>
+    <path d="M0 12 L60 52 L120 12" stroke="#AC722C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- 心跳/对话点 -->
+    <circle cx="60" cy="68" r="4" fill="#D09A4C"/>
+    <circle cx="48" cy="68" r="3" fill="#D09A4C" opacity="0.6"/>
+    <circle cx="72" cy="68" r="3" fill="#D09A4C" opacity="0.6"/>
+  </g>
+
+  <!-- 装饰小三角(左下) -->
+  <path d="M60 90 L92 90 L76 118 Z" fill="#D09A4C" opacity="0.45"/>
+</svg>

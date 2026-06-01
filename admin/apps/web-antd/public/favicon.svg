@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <title>Mandarly Logo v1 - Speech bubble with smile</title>
+  <!-- 主体：圆角对话气泡 -->
+  <rect x="64" y="64" width="384" height="296" rx="56" ry="56" fill="#FFB627"/>
+  <!-- 左下尾巴 -->
+  <path d="M 144 360 L 144 432 L 216 360 Z" fill="#FFB627"/>
+  <!-- 内部笑容（白色弧形，圆头收尾，兼具笔意） -->
+  <path d="M 152 158 Q 256 282 360 158"
+        stroke="#FFFFFF" stroke-width="44" stroke-linecap="round" fill="none"/>
+</svg>

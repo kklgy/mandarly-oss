@@ -1,0 +1,21 @@
+-- =============================================================================
+-- 🚨 LOCAL DEV ONLY — 文件名后缀 `_local-only`,自动化部署脚本必须 glob 排除
+-- 🚨 staging / prod 全空 DB **不要跑本补丁**,走主 patch 即可
+-- =============================================================================
+--
+-- 配合主 patch:`20260512_170500_M6_teacher_withdrawal_and_income_upgrade.sql`
+--
+-- 背景:
+--   本地 dev DB 在 A1 上线前已存在一张早期 drift 的 `teacher_withdrawal` 表
+--   (currency 字段缺 DEFAULT 'USD' 等)。主 patch 按 spec §2.1 (c) 走纯
+--   `CREATE TABLE`(无 IF NOT EXISTS),在本地会因表已存在而报错。
+--
+--   staging / prod DB **从未** 建过 `teacher_withdrawal`,直接跑主 patch
+--   即可,不需要本补丁。
+--
+-- 用法(仅本地):
+--   1. 先跑本补丁,清掉旧表
+--   2. 再跑主 patch,按 spec 重新 CREATE TABLE
+-- =============================================================================
+
+DROP TABLE IF EXISTS teacher_withdrawal;

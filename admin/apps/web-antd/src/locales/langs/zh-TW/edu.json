@@ -1,0 +1,116 @@
+{
+  "withdrawal": {
+    "menu": "提現審核",
+    "pageTitle": "教師提現審核",
+    "pageSubtitle": "審核教師提現申請並處理打款",
+    "tabs": {
+      "all": "全部",
+      "pending": "待審核",
+      "approved": "待打款",
+      "paid": "已打款",
+      "rejected": "已駁回",
+      "failed": "打款失敗"
+    },
+    "filter": {
+      "teacherKeyword": "教師姓名 / 信箱",
+      "statusLabel": "狀態",
+      "statusAll": "全部狀態",
+      "appliedFrom": "申請起始",
+      "appliedTo": "申請截止",
+      "amountMin": "金額下限",
+      "amountMax": "金額上限",
+      "search": "搜尋",
+      "reset": "重設",
+      "export": "匯出 CSV"
+    },
+    "column": {
+      "id": "ID",
+      "teacher": "教師",
+      "amount": "金額(USD)",
+      "currency": "幣別",
+      "payeeMethod": "收款方式",
+      "payeeMasked": "收款帳號",
+      "status": "狀態",
+      "appliedAt": "申請時間",
+      "auditedBy": "審核人",
+      "auditedAt": "審核時間",
+      "paidBy": "打款人",
+      "paidAt": "打款時間",
+      "action": "操作"
+    },
+    "status": {
+      "pending": "待審核",
+      "approved": "待打款",
+      "paid": "已打款",
+      "rejected": "已駁回",
+      "failed": "打款失敗"
+    },
+    "payeeMethod": {
+      "wechat": "微信",
+      "alipay": "支付寶",
+      "paypal": "PayPal",
+      "bankCard": "銀行卡",
+      "other": "其他"
+    },
+    "action": {
+      "viewDetail": "詳情",
+      "approve": "通過",
+      "reject": "駁回",
+      "markPaid": "標記打款",
+      "markFailed": "標記失敗",
+      "revealPayee": "查看完整收款資訊"
+    },
+    "detail": {
+      "title": "提現詳情",
+      "basicInfoTitle": "基本資訊",
+      "payeeInfoTitle": "收款資訊",
+      "auditTitle": "審核軌跡",
+      "timelineTitle": "狀態流轉",
+      "rejectReasonLabel": "駁回原因",
+      "paidProofLabel": "打款憑證",
+      "paidRemarkLabel": "備註",
+      "failReasonLabel": "失敗原因"
+    },
+    "modal": {
+      "approveTitle": "通過提現",
+      "approveConfirm": "確認通過提現 #{id}(USD {amount},教師 {teacher})?",
+      "rejectTitle": "駁回提現",
+      "rejectReasonLabel": "駁回原因",
+      "rejectReasonPlaceholder": "請填寫明確原因,教師將收到通知",
+      "rejectReasonRequired": "請填寫駁回原因",
+      "markPaidTitle": "標記打款",
+      "markPaidProofLabel": "打款憑證",
+      "markPaidProofPlaceholder": "可選 — 打款憑證 URL",
+      "markPaidRemarkLabel": "備註",
+      "markPaidRemarkPlaceholder": "可選 — 打款備註",
+      "markFailedTitle": "標記打款失敗",
+      "markFailedReasonLabel": "失敗原因",
+      "markFailedReasonPlaceholder": "請描述打款失敗的原因",
+      "markFailedReasonRequired": "請填寫失敗原因",
+      "revealTitle": "查看完整收款資訊",
+      "revealWarning": "本次查看將被審計,僅打款時揭示",
+      "revealConfirm": "確認查看",
+      "cancel": "取消",
+      "confirm": "確認",
+      "submitting": "提交中..."
+    },
+    "toast": {
+      "approveSuccess": "已通過",
+      "rejectSuccess": "已駁回,餘額已退回",
+      "markPaidSuccess": "已標記打款",
+      "markFailedSuccess": "已標記失敗,餘額已退回",
+      "revealSuccess": "已揭示收款資訊",
+      "exportSuccess": "匯出任務已啟動",
+      "noPermission": "您沒有權限執行此操作",
+      "stateChanged": "提現狀態已變更,正在重新載入列表",
+      "loadFailed": "載入失敗,請稍後重試"
+    },
+    "error": {
+      "notFound": "提現申請不存在",
+      "invalidStatus": "當前狀態不允許此操作",
+      "rejectReasonRequired": "請填寫駁回原因",
+      "failReasonRequired": "請填寫失敗原因",
+      "lockTimeout": "操作超時,請稍後重試"
+    }
+  }
+}

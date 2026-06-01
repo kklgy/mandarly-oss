@@ -1,0 +1,3 @@
+com.mandarly.boot.framework.datasource.config.MandarlyDataSourceAutoConfiguration
+com.mandarly.boot.framework.mybatis.config.MandarlyMybatisAutoConfiguration
+com.mandarly.boot.framework.translate.config.MandarlyTranslateAutoConfiguration

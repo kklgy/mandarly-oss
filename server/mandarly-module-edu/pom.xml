@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.mandarly.boot</groupId>
+        <artifactId>mandarly</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>mandarly-module-edu</artifactId>
+    <packaging>jar</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>
+        edu 模块,Mandarly 在线中文培训核心业务:
+        teacher / student / package / schedule / booking / classroom / payment / income / withdrawal / referral / review / notification
+    </description>
+
+    <dependencies>
+        <!-- 依赖 system 模块(用其 system_users / 字典等)-->
+        <dependency>
+            <groupId>com.mandarly.boot</groupId>
+            <artifactId>mandarly-module-system</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Web 安全 -->
+        <dependency>
+            <groupId>com.mandarly.boot</groupId>
+            <artifactId>mandarly-spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- 校验 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- DB -->
+        <dependency>
+            <groupId>com.mandarly.boot</groupId>
+            <artifactId>mandarly-spring-boot-starter-mybatis</artifactId>
+        </dependency>
+
+        <!-- Redis -->
+        <dependency>
+            <groupId>com.mandarly.boot</groupId>
+            <artifactId>mandarly-spring-boot-starter-redis</artifactId>
+        </dependency>
+
+        <!-- 定时任务 -->
+        <dependency>
+            <groupId>com.mandarly.boot</groupId>
+            <artifactId>mandarly-spring-boot-starter-job</artifactId>
+        </dependency>
+
+        <!-- 测试 -->
+        <dependency>
+            <groupId>com.mandarly.boot</groupId>
+            <artifactId>mandarly-spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Excel 导出(后台教师列表导出可能用)-->
+        <dependency>
+            <groupId>com.mandarly.boot</groupId>
+            <artifactId>mandarly-spring-boot-starter-excel</artifactId>
+        </dependency>
+
+        <!-- 腾讯云 SDK(LCIC 视频课堂 + 后续 COS / ISMS 短信复用同一套)-->
+        <dependency>
+            <groupId>com.tencentcloudapi</groupId>
+            <artifactId>tencentcloud-sdk-java</artifactId>
+            <version>3.1.964</version>
+        </dependency>
+
+        <!-- Stripe 支付 SDK -->
+        <dependency>
+            <groupId>com.stripe</groupId>
+            <artifactId>stripe-java</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

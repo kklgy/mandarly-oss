@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/preferences.ts",
+    "src/api/edu/**/*.ts",
+    "src/views/edu/**/*.ts",
+    "src/views/edu/**/*.vue",
+    "src/components/operate-log/**/*.ts",
+    "src/components/operate-log/**/*.vue"
+  ]
+}

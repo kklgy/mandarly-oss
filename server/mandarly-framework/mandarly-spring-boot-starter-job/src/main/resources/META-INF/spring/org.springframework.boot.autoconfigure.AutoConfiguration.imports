@@ -1,0 +1,2 @@
+com.mandarly.boot.framework.quartz.config.MandarlyQuartzAutoConfiguration
+com.mandarly.boot.framework.quartz.config.MandarlyAsyncAutoConfiguration

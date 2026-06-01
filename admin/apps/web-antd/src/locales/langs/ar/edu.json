@@ -1,0 +1,116 @@
+{
+  "withdrawal": {
+    "menu": "[TODO ar] 提现审核",
+    "pageTitle": "[TODO ar] 教师提现审核",
+    "pageSubtitle": "[TODO ar] 审核教师提现申请并处理打款",
+    "tabs": {
+      "all": "[TODO ar] 全部",
+      "pending": "[TODO ar] 待审核",
+      "approved": "[TODO ar] 待打款",
+      "paid": "[TODO ar] 已打款",
+      "rejected": "[TODO ar] 已驳回",
+      "failed": "[TODO ar] 打款失败"
+    },
+    "filter": {
+      "teacherKeyword": "[TODO ar] 教师姓名 / 邮箱",
+      "statusLabel": "[TODO ar] 状态",
+      "statusAll": "[TODO ar] 全部状态",
+      "appliedFrom": "[TODO ar] 申请起始",
+      "appliedTo": "[TODO ar] 申请截止",
+      "amountMin": "[TODO ar] 金额下限",
+      "amountMax": "[TODO ar] 金额上限",
+      "search": "[TODO ar] 搜索",
+      "reset": "[TODO ar] 重置",
+      "export": "[TODO ar] 导出 CSV"
+    },
+    "column": {
+      "id": "[TODO ar] ID",
+      "teacher": "[TODO ar] 教师",
+      "amount": "[TODO ar] 金额(USD)",
+      "currency": "[TODO ar] 币种",
+      "payeeMethod": "[TODO ar] 收款方式",
+      "payeeMasked": "[TODO ar] 收款账号",
+      "status": "[TODO ar] 状态",
+      "appliedAt": "[TODO ar] 申请时间",
+      "auditedBy": "[TODO ar] 审核人",
+      "auditedAt": "[TODO ar] 审核时间",
+      "paidBy": "[TODO ar] 打款人",
+      "paidAt": "[TODO ar] 打款时间",
+      "action": "[TODO ar] 操作"
+    },
+    "status": {
+      "pending": "[TODO ar] 待审核",
+      "approved": "[TODO ar] 待打款",
+      "paid": "[TODO ar] 已打款",
+      "rejected": "[TODO ar] 已驳回",
+      "failed": "[TODO ar] 打款失败"
+    },
+    "payeeMethod": {
+      "wechat": "[TODO ar] 微信",
+      "alipay": "[TODO ar] 支付宝",
+      "paypal": "PayPal",
+      "bankCard": "[TODO ar] 银行卡",
+      "other": "[TODO ar] 其他"
+    },
+    "action": {
+      "viewDetail": "[TODO ar] 详情",
+      "approve": "[TODO ar] 通过",
+      "reject": "[TODO ar] 驳回",
+      "markPaid": "[TODO ar] 标记打款",
+      "markFailed": "[TODO ar] 标记失败",
+      "revealPayee": "[TODO ar] 查看完整收款信息"
+    },
+    "detail": {
+      "title": "[TODO ar] 提现详情",
+      "basicInfoTitle": "[TODO ar] 基本信息",
+      "payeeInfoTitle": "[TODO ar] 收款信息",
+      "auditTitle": "[TODO ar] 审核轨迹",
+      "timelineTitle": "[TODO ar] 状态流转",
+      "rejectReasonLabel": "[TODO ar] 驳回原因",
+      "paidProofLabel": "[TODO ar] 打款凭证",
+      "paidRemarkLabel": "[TODO ar] 备注",
+      "failReasonLabel": "[TODO ar] 失败原因"
+    },
+    "modal": {
+      "approveTitle": "[TODO ar] 通过提现",
+      "approveConfirm": "[TODO ar] 确认通过提现 #{id}(USD {amount},教师 {teacher})?",
+      "rejectTitle": "[TODO ar] 驳回提现",
+      "rejectReasonLabel": "[TODO ar] 驳回原因",
+      "rejectReasonPlaceholder": "[TODO ar] 请填写明确原因,教师将收到通知",
+      "rejectReasonRequired": "[TODO ar] 请填写驳回原因",
+      "markPaidTitle": "[TODO ar] 标记打款",
+      "markPaidProofLabel": "[TODO ar] 打款凭证",
+      "markPaidProofPlaceholder": "[TODO ar] 可选 — 打款凭证 URL",
+      "markPaidRemarkLabel": "[TODO ar] 备注",
+      "markPaidRemarkPlaceholder": "[TODO ar] 可选 — 打款备注",
+      "markFailedTitle": "[TODO ar] 标记打款失败",
+      "markFailedReasonLabel": "[TODO ar] 失败原因",
+      "markFailedReasonPlaceholder": "[TODO ar] 请描述打款失败的原因",
+      "markFailedReasonRequired": "[TODO ar] 请填写失败原因",
+      "revealTitle": "[TODO ar] 查看完整收款信息",
+      "revealWarning": "[TODO ar] 本次查看将被审计,仅打款时揭示",
+      "revealConfirm": "[TODO ar] 确认查看",
+      "cancel": "[TODO ar] 取消",
+      "confirm": "[TODO ar] 确认",
+      "submitting": "[TODO ar] 提交中..."
+    },
+    "toast": {
+      "approveSuccess": "[TODO ar] 已通过",
+      "rejectSuccess": "[TODO ar] 已驳回,余额已退回",
+      "markPaidSuccess": "[TODO ar] 已标记打款",
+      "markFailedSuccess": "[TODO ar] 已标记失败,余额已退回",
+      "revealSuccess": "[TODO ar] 已揭示收款信息",
+      "exportSuccess": "[TODO ar] 导出任务已启动",
+      "noPermission": "[TODO ar] 您没有权限执行此操作",
+      "stateChanged": "[TODO ar] 提现状态已变更,正在重新加载列表",
+      "loadFailed": "[TODO ar] 加载失败,请稍后重试"
+    },
+    "error": {
+      "notFound": "[TODO ar] 提现申请不存在",
+      "invalidStatus": "[TODO ar] 当前状态不允许此操作",
+      "rejectReasonRequired": "[TODO ar] 请填写驳回原因",
+      "failReasonRequired": "[TODO ar] 请填写失败原因",
+      "lockTimeout": "[TODO ar] 操作超时,请稍后重试"
+    }
+  }
+}

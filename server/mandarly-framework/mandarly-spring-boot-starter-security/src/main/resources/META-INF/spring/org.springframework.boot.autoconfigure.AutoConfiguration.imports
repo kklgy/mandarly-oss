@@ -1,0 +1,3 @@
+com.mandarly.boot.framework.security.config.MandarlySecurityAutoConfiguration
+com.mandarly.boot.framework.security.config.MandarlyWebSecurityConfigurerAdapter
+com.mandarly.boot.framework.operatelog.config.MandarlyOperateLogConfiguration

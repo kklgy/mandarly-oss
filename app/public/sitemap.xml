@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mandarly sitemap.xml — dev fallback(静态 4 个公开 URL)
+  详见 docs/frontend/seo-geo-checklist.md §1.7
+
+  生产 sitemap 由后端动态生成,nginx 反代:
+    https://mandarly.com/sitemap.xml
+      → 反代 → /app-api/edu/sitemap.xml(PublicSitemapController,含动态教师列表)
+  反代规则见 deploy/docker/nginx/default.conf
+
+  本静态文件仅 dev / preview 期生效:
+    pnpm dev / pnpm preview 时 vite 直接吐 public/sitemap.xml
+    生产构建后,nginx 优先匹配后端动态版本,本文件被 bypass
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://mandarly.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://mandarly.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://mandarly.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mandarly.com/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mandarly.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mandarly.com/" />
+  </url>
+
+  <url>
+    <loc>https://mandarly.com/teachers</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://mandarly.com/level-check</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://mandarly.com/legal/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://mandarly.com/legal/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

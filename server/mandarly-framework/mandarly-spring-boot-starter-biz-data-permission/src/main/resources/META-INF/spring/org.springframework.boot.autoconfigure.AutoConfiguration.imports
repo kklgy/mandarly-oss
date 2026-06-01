@@ -1,0 +1,2 @@
+com.mandarly.boot.framework.datapermission.config.MandarlyDataPermissionAutoConfiguration
+com.mandarly.boot.framework.datapermission.config.MandarlyDeptDataPermissionAutoConfiguration

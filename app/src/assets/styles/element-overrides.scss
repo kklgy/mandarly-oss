@@ -1,0 +1,63 @@
+// =============================================================================
+// Element Plus 主题色覆盖(Mandarly 品牌色)
+// =============================================================================
+// 思路:Element Plus 用 CSS 变量(--el-color-primary 等)做主题
+// 我们直接在 :root 重新定义这些变量,覆盖默认蓝(#409EFF) → Mandarly 主色
+// 不用 SCSS 重编译方案(需 sass:additionalData 时序复杂),改 CSS variables 更直接
+// =============================================================================
+
+// !important 收口 — EP 按需加载(unplugin-vue-components ElementPlusResolver)
+// 会在 lazy import 组件时**再次注入** `:root { --el-color-primary: #409eff }`,
+// 顺序晚于 main.js 的 import,导致我们 :root 覆盖被回写默认蓝。
+// 解决:!important 锁定主色,EP 后注入也覆盖不掉(CSS var !important 合规且高效)
+:root {
+  // 主色 + 自动派生(暗 / 浅)梯度
+  --el-color-primary: #{brand.$brand-primary} !important;
+  --el-color-primary-light-3: #C4945B !important;
+  --el-color-primary-light-5: #D6B58E !important;
+  --el-color-primary-light-7: #E8D6C1 !important;
+  --el-color-primary-light-8: #EFE1D3 !important;
+  --el-color-primary-light-9: #F8F2EA !important;
+  --el-color-primary-dark-2: #{brand.$brand-primary-deep} !important;
+
+  // 状态色对齐
+  --el-color-success: #{brand.$color-success} !important;
+  --el-color-warning: #{brand.$color-warning} !important;
+  --el-color-error: #{brand.$color-error} !important;
+  --el-color-info: #{brand.$color-info} !important;
+
+  // 圆角对齐
+  --el-border-radius-base: #{brand.$radius-base};
+  --el-border-radius-small: #{brand.$radius-sm};
+
+  // 字体栈对齐
+  --el-font-family: #{brand.$font-family-base};
+}
+
+// 主按钮特殊处理(gold 底白字,hover 用深主色)
+.el-button--primary {
+  --el-button-text-color: #{brand.$btn-primary-text} !important;
+  --el-button-bg-color: #{brand.$brand-primary} !important;
+  --el-button-border-color: #{brand.$brand-primary} !important;
+  --el-button-hover-text-color: #{brand.$btn-primary-text} !important;
+  --el-button-hover-bg-color: #{brand.$brand-primary-deep} !important;
+  --el-button-hover-border-color: #{brand.$brand-primary-deep} !important;
+  --el-button-active-text-color: #{brand.$btn-primary-text} !important;
+  --el-button-active-bg-color: #{brand.$brand-primary-deep} !important;
+  --el-button-active-border-color: #{brand.$brand-primary-deep} !important;
+  --el-button-disabled-text-color: #{brand.$color-text-secondary} !important;
+  --el-button-disabled-bg-color: #{brand.$brand-primary-disabled} !important;
+  --el-button-disabled-border-color: #{brand.$brand-primary-disabled} !important;
+  color: brand.$btn-primary-text !important;
+}
+
+.el-button--primary:not(.is-disabled):hover {
+  box-shadow: brand.$shadow-brand;
+}
+
+.el-button:focus-visible,
+.el-input__wrapper.is-focus,
+.el-select__wrapper.is-focused,
+.el-textarea__inner:focus {
+  box-shadow: brand.$ring-focus;
+}

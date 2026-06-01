@@ -1,0 +1,3 @@
+com.mandarly.boot.framework.mq.redis.config.MandarlyRedisMQProducerAutoConfiguration
+com.mandarly.boot.framework.mq.redis.config.MandarlyRedisMQConsumerAutoConfiguration
+com.mandarly.boot.framework.mq.rabbitmq.config.MandarlyRabbitMQAutoConfiguration

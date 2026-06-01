@@ -1,0 +1,60 @@
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+.cache/
+.turbo/
+
+# Java / Maven
+target/
+*.class
+*.log
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+.flattened-pom.xml
+
+# Spring Boot uploads(生产)
+server/upload/
+
+# Env
+*.env.local
+.env.*.local
+
+# Secrets: never commit credentials, API keys, passwords, or private runbooks.
+docs/secrets/*
+!docs/secrets/README.md
+
+# Logs
+logs/
+*.log
+
+# Auto-generated
+src/auto-imports.d.ts
+src/components.d.ts
+.claude/
+.codegraph/
+
+# Deploy(部署 .env / 数据 / 日志,严禁入 git)
+deploy/docker/.env
+deploy/docker/data/
+deploy/docker/logs/
+
+# Playwright MCP 截图 / snapshot 输出目录(自测临时产物,不进 git)
+.playwright-mcp/
+# 项目根的临时截图(MCP 有时把截图写到 cwd 而非 .playwright-mcp/)
+/*.png
+
+# Worktrees — 隔离工作区(系统级改造走 worktree subagent-driven)
+.worktrees/
+.superpowers/

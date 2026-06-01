@@ -1,0 +1,7 @@
+com.mandarly.boot.framework.apilog.config.MandarlyApiLogAutoConfiguration
+com.mandarly.boot.framework.jackson.config.MandarlyJacksonAutoConfiguration
+com.mandarly.boot.framework.swagger.config.MandarlySwaggerAutoConfiguration
+com.mandarly.boot.framework.web.config.MandarlyWebAutoConfiguration
+com.mandarly.boot.framework.xss.config.MandarlyXssAutoConfiguration
+com.mandarly.boot.framework.banner.config.MandarlyBannerAutoConfiguration
+com.mandarly.boot.framework.encrypt.config.MandarlyApiEncryptAutoConfiguration

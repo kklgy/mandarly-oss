@@ -1,0 +1,2 @@
+com.mandarly.boot.framework.redis.config.MandarlyRedisAutoConfiguration
+com.mandarly.boot.framework.redis.config.MandarlyCacheAutoConfiguration

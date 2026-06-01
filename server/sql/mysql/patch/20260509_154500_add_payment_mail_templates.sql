@@ -1,0 +1,117 @@
+-- =============================================================================
+-- Patch:M4 支付通知邮件模板(2026-05-09)
+-- =============================================================================
+-- 4 模板 × 4 语言(zh-CN / zh-TW / en / ar) = 16 行 system_mail_template
+-- ar 为初版占位,二期由阿语校对补全
+-- 模板 ID 范围:201-216(接续 M2.5-γ 101-106)
+--
+-- 模板说明:
+--   #1 mandarly_payment_success_{locale}: 套餐购买成功通知(学生)
+--   #2 mandarly_payment_refund_{locale}:  退款到账通知(学生)
+--   #3 mandarly_payment_teacher_deduct_{locale}: 退款扣回通知(教师)
+--   #4 mandarly_payment_referral_reward_{locale}: 推荐人获赠免费课通知
+--
+-- 占位变量说明:
+--   #1: {packageName} {amountPaid} {currency}
+--   #2: {finalAmount} {currency} {packageName}
+--   #3: {teacherName} {deductedAmountUsd} {studentEmail} {reason}
+--   #4: {referrerName} {refereeEmail}
+-- =============================================================================
+
+INSERT INTO system_mail_template
+  (id, name, code, account_id, nickname, title, content, params, status, remark, creator, updater)
+VALUES
+
+-- ============ #1 套餐购买成功 ============
+(201, '支付-购买成功-简中', 'mandarly_payment_success_zh_cn', 1, 'Mandarly',
+ 'Mandarly · 套餐购买成功',
+ '您好！\n\n您已成功购买 Mandarly 套餐"{packageName}"。\n\n支付金额：{currency} {amountPaid}\n\n现在可以前往预约专属 1v1 中文课啦！\n\nhttp://localhost:3001/my/packages\n\n— Mandarly Team',
+ '["packageName","amountPaid","currency"]', 0, 'M4 购买成功 ZH-CN', 'system', 'system'),
+
+(202, '支付-购买成功-繁中', 'mandarly_payment_success_zh_tw', 1, 'Mandarly',
+ 'Mandarly · 套餐購買成功',
+ '您好！\n\n您已成功購買 Mandarly 套餐「{packageName}」。\n\n支付金額：{currency} {amountPaid}\n\n現在可以前往預約專屬 1v1 中文課啦！\n\nhttp://localhost:3001/my/packages\n\n— Mandarly Team',
+ '["packageName","amountPaid","currency"]', 0, 'M4 购买成功 ZH-TW', 'system', 'system'),
+
+(203, '支付-购买成功-英文', 'mandarly_payment_success_en', 1, 'Mandarly',
+ 'Mandarly · Package purchase confirmed',
+ 'Hi there!\n\nYou have successfully purchased the Mandarly package "{packageName}".\n\nAmount paid: {currency} {amountPaid}\n\nYou can now book your 1-on-1 Mandarin lessons:\nhttp://localhost:3001/my/packages\n\n— Mandarly Team',
+ '["packageName","amountPaid","currency"]', 0, 'M4 购买成功 EN', 'system', 'system'),
+
+(204, '支付-购买成功-阿语', 'mandarly_payment_success_ar', 1, 'Mandarly',
+ '[TODO ar] Mandarly · تم الشراء بنجاح',
+ '[TODO ar] مرحباً!\n\nلقد اشتريت بنجاح باقة Mandarly "{packageName}".\n\nالمبلغ المدفوع: {currency} {amountPaid}\n\nيمكنك الآن حجز دروسك:\nhttp://localhost:3001/my/packages\n\n— Mandarly Team',
+ '["packageName","amountPaid","currency"]', 0, 'M4 购买成功 AR (TODO)', 'system', 'system'),
+
+-- ============ #2 退款到账通知(学生) ============
+(205, '支付-退款到账-简中', 'mandarly_payment_refund_zh_cn', 1, 'Mandarly',
+ 'Mandarly · 退款已到账',
+ '您好！\n\n您申请的 Mandarly 套餐"{packageName}"退款已处理完成。\n\n退款金额：{currency} {finalAmount}\n\n退款将在 5-10 个工作日内到账原支付方式。\n\n如有疑问请联系客服：support@mandarly.com\n\n— Mandarly Team',
+ '["finalAmount","currency","packageName"]', 0, 'M4 退款到账 ZH-CN', 'system', 'system'),
+
+(206, '支付-退款到账-繁中', 'mandarly_payment_refund_zh_tw', 1, 'Mandarly',
+ 'Mandarly · 退款已到帳',
+ '您好！\n\n您申請的 Mandarly 套餐「{packageName}」退款已處理完成。\n\n退款金額：{currency} {finalAmount}\n\n退款將在 5-10 個工作日內到帳至原支付方式。\n\n如有疑問請聯絡客服：support@mandarly.com\n\n— Mandarly Team',
+ '["finalAmount","currency","packageName"]', 0, 'M4 退款到账 ZH-TW', 'system', 'system'),
+
+(207, '支付-退款到账-英文', 'mandarly_payment_refund_en', 1, 'Mandarly',
+ 'Mandarly · Refund processed',
+ 'Hi there!\n\nYour refund for the Mandarly package "{packageName}" has been processed.\n\nRefund amount: {currency} {finalAmount}\n\nPlease allow 5-10 business days for the funds to appear on your original payment method.\n\nIf you have any questions, contact: support@mandarly.com\n\n— Mandarly Team',
+ '["finalAmount","currency","packageName"]', 0, 'M4 退款到账 EN', 'system', 'system'),
+
+(208, '支付-退款到账-阿语', 'mandarly_payment_refund_ar', 1, 'Mandarly',
+ '[TODO ar] Mandarly · تم معالجة الاسترداد',
+ '[TODO ar] مرحباً!\n\nتم معالجة استرداد باقة Mandarly "{packageName}".\n\nمبلغ الاسترداد: {currency} {finalAmount}\n\nيرجى الانتظار 5-10 أيام عمل.\n\n— Mandarly Team',
+ '["finalAmount","currency","packageName"]', 0, 'M4 退款到账 AR (TODO)', 'system', 'system'),
+
+-- ============ #3 退款扣回通知(教师) ============
+(209, '支付-退款扣回-简中', 'mandarly_payment_teacher_deduct_zh_cn', 1, 'Mandarly',
+ 'Mandarly · 收入扣回通知',
+ '亲爱的 {teacherName} 老师：\n\n由于学生 {studentEmail} 申请退款（原因：{reason}），系统已从您的收入中扣回以下金额：\n\n扣回金额：USD {deductedAmountUsd}\n\n如有疑问请联系运营团队。\n\n— Mandarly Team',
+ '["teacherName","deductedAmountUsd","studentEmail","reason"]', 0, 'M4 教师扣回 ZH-CN', 'system', 'system'),
+
+(210, '支付-退款扣回-繁中', 'mandarly_payment_teacher_deduct_zh_tw', 1, 'Mandarly',
+ 'Mandarly · 收入扣回通知',
+ '親愛的 {teacherName} 老師：\n\n由於學生 {studentEmail} 申請退款（原因：{reason}），系統已從您的收入中扣回以下金額：\n\n扣回金額：USD {deductedAmountUsd}\n\n如有疑問請聯絡營運團隊。\n\n— Mandarly Team',
+ '["teacherName","deductedAmountUsd","studentEmail","reason"]', 0, 'M4 教师扣回 ZH-TW', 'system', 'system'),
+
+(211, '支付-退款扣回-英文', 'mandarly_payment_teacher_deduct_en', 1, 'Mandarly',
+ 'Mandarly · Income adjustment notice',
+ 'Dear {teacherName},\n\nA refund was requested by student {studentEmail} (reason: {reason}). The following amount has been deducted from your earnings:\n\nDeducted: USD {deductedAmountUsd}\n\nIf you have any concerns, please contact the operations team.\n\n— Mandarly Team',
+ '["teacherName","deductedAmountUsd","studentEmail","reason"]', 0, 'M4 教师扣回 EN', 'system', 'system'),
+
+(212, '支付-退款扣回-阿语', 'mandarly_payment_teacher_deduct_ar', 1, 'Mandarly',
+ '[TODO ar] Mandarly · إشعار خصم الدخل',
+ '[TODO ar] عزيزي {teacherName}،\n\nطلب الطالب {studentEmail} استرداد (السبب: {reason}). تم خصم المبلغ التالي من أرباحك:\n\nالمبلغ المخصوم: USD {deductedAmountUsd}\n\n— Mandarly Team',
+ '["teacherName","deductedAmountUsd","studentEmail","reason"]', 0, 'M4 教师扣回 AR (TODO)', 'system', 'system'),
+
+-- ============ #4 推荐人获赠免费课 ============
+(213, '支付-推荐奖励-简中', 'mandarly_payment_referral_reward_zh_cn', 1, 'Mandarly',
+ 'Mandarly · 推荐奖励 — 免费体验课已到账',
+ '亲爱的 {referrerName}！\n\n恭喜！你邀请的好友 {refereeEmail} 成功购买了套餐，你已获得 1 节免费体验课奖励！\n\n立即查看你的套餐：\nhttp://localhost:3001/my/packages\n\n继续邀请更多好友，赚取更多免费课次！\n\n— Mandarly Team',
+ '["referrerName","refereeEmail"]', 0, 'M4 推荐奖励 ZH-CN', 'system', 'system'),
+
+(214, '支付-推荐奖励-繁中', 'mandarly_payment_referral_reward_zh_tw', 1, 'Mandarly',
+ 'Mandarly · 推薦獎勵 — 免費體驗課已到帳',
+ '親愛的 {referrerName}！\n\n恭喜！你邀請的好友 {refereeEmail} 成功購買了套餐，你已獲得 1 節免費體驗課獎勵！\n\n立即查看你的套餐：\nhttp://localhost:3001/my/packages\n\n繼續邀請更多好友，賺取更多免費課次！\n\n— Mandarly Team',
+ '["referrerName","refereeEmail"]', 0, 'M4 推荐奖励 ZH-TW', 'system', 'system'),
+
+(215, '支付-推荐奖励-英文', 'mandarly_payment_referral_reward_en', 1, 'Mandarly',
+ 'Mandarly · Referral reward — free class added',
+ 'Hi {referrerName}!\n\nCongratulations! Your friend {refereeEmail} just bought a package. You have earned 1 free trial class as a reward!\n\nCheck your packages:\nhttp://localhost:3001/my/packages\n\nKeep inviting friends to earn more free classes!\n\n— Mandarly Team',
+ '["referrerName","refereeEmail"]', 0, 'M4 推荐奖励 EN', 'system', 'system'),
+
+(216, '支付-推荐奖励-阿语', 'mandarly_payment_referral_reward_ar', 1, 'Mandarly',
+ '[TODO ar] Mandarly · مكافأة الإحالة — تمت إضافة درس مجاني',
+ '[TODO ar] مرحباً {referrerName}!\n\nتهانينا! اشترى صديقك {refereeEmail} للتو باقة، وقد حصلت على درس تجريبي مجاني كمكافأة!\n\nتحقق من باقاتك:\nhttp://localhost:3001/my/packages\n\n— Mandarly Team',
+ '["referrerName","refereeEmail"]', 0, 'M4 推荐奖励 AR (TODO)', 'system', 'system')
+
+ON DUPLICATE KEY UPDATE
+  name      = VALUES(name),
+  title     = VALUES(title),
+  content   = VALUES(content),
+  params    = VALUES(params),
+  status    = VALUES(status),
+  account_id = VALUES(account_id),
+  remark    = VALUES(remark),
+  updater   = VALUES(updater);

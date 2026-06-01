@@ -1,0 +1,116 @@
+{
+  "withdrawal": {
+    "menu": "Withdrawal Review",
+    "pageTitle": "Teacher Withdrawal Review",
+    "pageSubtitle": "Review teacher withdrawal requests and process payouts",
+    "tabs": {
+      "all": "All",
+      "pending": "Pending Review",
+      "approved": "Awaiting Payout",
+      "paid": "Paid",
+      "rejected": "Rejected",
+      "failed": "Failed"
+    },
+    "filter": {
+      "teacherKeyword": "Teacher name / email",
+      "statusLabel": "Status",
+      "statusAll": "All statuses",
+      "appliedFrom": "Applied from",
+      "appliedTo": "Applied to",
+      "amountMin": "Min amount",
+      "amountMax": "Max amount",
+      "search": "Search",
+      "reset": "Reset",
+      "export": "Export CSV"
+    },
+    "column": {
+      "id": "ID",
+      "teacher": "Teacher",
+      "amount": "Amount (USD)",
+      "currency": "Currency",
+      "payeeMethod": "Payee Method",
+      "payeeMasked": "Payee (masked)",
+      "status": "Status",
+      "appliedAt": "Applied At",
+      "auditedBy": "Auditor",
+      "auditedAt": "Audited At",
+      "paidBy": "Paid By",
+      "paidAt": "Paid At",
+      "action": "Action"
+    },
+    "status": {
+      "pending": "Pending Review",
+      "approved": "Awaiting Payout",
+      "paid": "Paid",
+      "rejected": "Rejected",
+      "failed": "Failed"
+    },
+    "payeeMethod": {
+      "wechat": "WeChat",
+      "alipay": "Alipay",
+      "paypal": "PayPal",
+      "bankCard": "Bank Card",
+      "other": "Other"
+    },
+    "action": {
+      "viewDetail": "Detail",
+      "approve": "Approve",
+      "reject": "Reject",
+      "markPaid": "Mark Paid",
+      "markFailed": "Mark Failed",
+      "revealPayee": "Reveal Payee Info"
+    },
+    "detail": {
+      "title": "Withdrawal Detail",
+      "basicInfoTitle": "Basic Info",
+      "payeeInfoTitle": "Payee Info",
+      "auditTitle": "Audit Trail",
+      "timelineTitle": "Status Timeline",
+      "rejectReasonLabel": "Reject Reason",
+      "paidProofLabel": "Proof",
+      "paidRemarkLabel": "Note",
+      "failReasonLabel": "Failure Reason"
+    },
+    "modal": {
+      "approveTitle": "Approve Withdrawal",
+      "approveConfirm": "Approve withdrawal #{id} (USD {amount}) for teacher {teacher}?",
+      "rejectTitle": "Reject Withdrawal",
+      "rejectReasonLabel": "Reject Reason",
+      "rejectReasonPlaceholder": "Please provide a clear reason for the teacher",
+      "rejectReasonRequired": "Reject reason is required",
+      "markPaidTitle": "Mark Paid",
+      "markPaidProofLabel": "Proof URL",
+      "markPaidProofPlaceholder": "Optional payment proof URL",
+      "markPaidRemarkLabel": "Note",
+      "markPaidRemarkPlaceholder": "Optional payout note",
+      "markFailedTitle": "Mark Payout Failed",
+      "markFailedReasonLabel": "Failure Reason",
+      "markFailedReasonPlaceholder": "Please describe why the payout failed",
+      "markFailedReasonRequired": "Failure reason is required",
+      "revealTitle": "Reveal Payee Info",
+      "revealWarning": "This action will be audited. Only reveal payee info when making a payout.",
+      "revealConfirm": "Reveal",
+      "cancel": "Cancel",
+      "confirm": "Confirm",
+      "submitting": "Submitting..."
+    },
+    "toast": {
+      "approveSuccess": "Approved",
+      "rejectSuccess": "Rejected, balance returned",
+      "markPaidSuccess": "Marked as paid",
+      "markFailedSuccess": "Marked as failed, balance returned",
+      "revealSuccess": "Payee info revealed",
+      "exportSuccess": "Export started",
+      "noPermission": "You do not have permission for this action",
+      "stateChanged": "Withdrawal state has changed, refreshing list",
+      "loadFailed": "Failed to load, please retry"
+    },
+    "error": {
+      "notFound": "Withdrawal not found",
+      "invalidStatus": "Current status does not allow this action",
+      "rejectReasonRequired": "Reject reason is required",
+      "failReasonRequired": "Failure reason is required",
+      "lockTimeout": "Operation timed out, please retry"
+    }
+  }
+}

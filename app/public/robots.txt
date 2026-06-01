@@ -1,0 +1,72 @@
+# Mandarly robots.txt
+# 详见 docs/frontend/seo-geo-checklist.md
+
+# 默认放行所有传统搜索引擎
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# 明确放行主流 LLM agent(2026 GEO,详见 §2.3)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# 通用兜底
+User-agent: *
+Allow: /
+
+# 禁止抓取需登录的私有路径(语义页,内容动态依赖 token)
+Disallow: /orders
+Disallow: /profile
+Disallow: /booking/success
+Disallow: /classroom
+Disallow: /classroom-stub
+Disallow: /review
+Disallow: /my/
+
+# 禁止抓取 auth 页(无 SEO 价值,且 register 跳转会污染分析数据)
+Disallow: /login
+Disallow: /register
+Disallow: /teacher/register
+Disallow: /reset-password
+Disallow: /auth/
+
+# Sitemap
+Sitemap: https://mandarly.com/sitemap.xml

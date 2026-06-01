@@ -1,0 +1,392 @@
+// =============================================================================
+// Mandarly 品牌 Design Token
+// =============================================================================
+// 来源:
+//   - 业务源: docs/product/prd-v4.md §13(品牌)
+//   - 视觉契约: docs/frontend/ui-style-guide-v1.md §1-§4
+//   - 视觉样板: docs/frontend/visual-reference/DESIGN-mandarly-v1.md(组件级映射)
+//   - 品牌资产: docs/brand/deliverables-v1/00-README.md
+// 范围:用户端 app/(admin/ 端使用 vben 主题机制,见 admin/src/.../theme.css)
+// 维护原则:**所有主色 / 字体 / 间距硬编码必须经过此文件 token,禁止散落**
+// =============================================================================
+
+// -------- 品牌主色 --------
+// D29(2026-05-26):用户端切到甲方新 logo 的 navy / gold / white 体系。
+$brand-navy: #1A3660;
+$brand-gold: #AC722C;
+$brand-primary: $brand-gold;          // gold(主 CTA / 强调)
+$brand-primary-deep: #8E571D;         // hover / active / gradient end
+$brand-primary-light: #D09A4C;        // gradient start / 辅助强调
+$brand-primary-soft: #F8F2EA;         // gold 软底
+$brand-primary-disabled: #E7D0AF;     // 禁用态主色
+
+// 主色渐变(品牌常用)
+$brand-gradient: linear-gradient(135deg, $brand-primary-light 0%, $brand-primary-deep 100%);
+
+// D25 新增:浓度升级 gradient(对齐参考站 visual)
+$brand-gradient-cta: linear-gradient(to right, $brand-gold, $brand-primary-deep); // CTA 按钮横向渐变 + pill
+$brand-gradient-hero-soft: linear-gradient(to bottom, $brand-primary-soft, #FFFFFF); // Hero 软底
+$brand-gradient-bottom-cta: linear-gradient(135deg, $brand-navy, $brand-primary-deep, $brand-gold); // Bottom CTA 多色
+
+// -------- 中性色 --------
+$color-text-primary: #1a1a1a;      // 正文(对应 DESIGN-mandarly-v1 `{colors.ink}`)
+$color-text-body: #3f3f3f;         // 长文本第二色阶(对应 `{colors.body}`,长评价/介绍用)
+$color-text-secondary: #595959;    // 次要正文(对应 `{colors.muted}`)
+$color-text-tertiary: #8c8c8c;     // 辅助文字 / 占位(对应 `{colors.muted-soft}`)
+$color-text-disabled: #bfbfbf;
+$color-text-inverse: #ffffff;      // 反色(ink / 深色实底按钮上的字)
+$btn-primary-text: $color-text-inverse; // 新金色按钮使用白字,对比度满足 AA
+
+$color-border: #e8e8e8;            // 默认 1px 边(对应 `{colors.hairline}`)
+$color-border-light: #f0f0f0;      // 表格分隔(对应 `{colors.hairline-soft}`)
+$color-border-strong: #bfbfbf;     // focus / error 描边(对应 `{colors.border-strong}`)
+$color-divider: #f5f5f5;
+
+$color-bg-page: #fafafa;           // surface-soft
+$color-bg-card: #ffffff;           // canvas / surface-card
+$color-bg-strong: #f5f5f5;         // surface-strong——圆形 icon 按钮底 / 空态(DESIGN-mandarly v1 加项)
+$color-bg-mask: rgba(0, 0, 0, 0.45);
+
+// -------- 状态色 --------
+$color-success: #52c41a;
+$color-warning: #faad14;
+$color-warning-soft: rgba(250, 173, 20, 0.08);
+$color-error: #ff4d4f;
+$color-error-soft: rgba(255, 77, 79, 0.08);
+$color-info: #1890ff;
+
+// -------- 字体栈(PRD §13)--------
+// 中文优先 PingFang SC(macOS / iOS),Windows 用 微软雅黑 / Noto Sans SC fallback
+// 英文标题用 Georgia 衬线斜体(品牌调性)
+// 英文正文用系统字体保证渲染速度
+// 阿拉伯语 fallback Noto Sans Arabic,RTL 模式下浏览器自动选用
+$font-family-base:
+  -apple-system, BlinkMacSystemFont,
+  'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+  'Noto Sans SC', 'Noto Sans Arabic',
+  Helvetica, Arial, sans-serif;
+
+$font-family-heading-en:
+  Georgia, 'Times New Roman', Times, serif;
+
+$font-family-mono:
+  'SF Mono', Monaco, Menlo, Consolas, 'Courier New', monospace;
+
+// -------- 字号 --------
+$font-size-xs: 12px;
+$font-size-sm: 13px;
+$font-size-base: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 30px;
+$font-size-4xl: 38px;
+$font-size-5xl: 48px;        // D25:数字统计 / Hero H1 / Bottom CTA 大字
+
+$line-height-tight: 1.2;
+$line-height-base: 1.5;
+$line-height-loose: 1.75;
+
+// -------- 间距(8px 基础栅格)--------
+$spacing-1: 4px;
+$spacing-2: 8px;
+$spacing-3: 12px;
+$spacing-4: 16px;
+$spacing-5: 20px;
+$spacing-6: 24px;
+$spacing-8: 32px;
+$spacing-10: 40px;
+$spacing-12: 48px;
+$spacing-16: 64px;
+$spacing-20: 80px;
+
+// -------- 圆角 --------
+$radius-sm: 4px;            // 徽章 / 标签
+$radius-base: 8px;          // 按钮 / 输入框 / 表格(对应 DESIGN-mandarly-v1 `{rounded.sm}`)
+$radius-lg: 12px;           // 卡片(默认,对应 `{rounded.md}`)
+$radius-card: 14px;         // 教师卡 / 套餐卡(对应 `{rounded.lg}`,Airbnb property card 同款)
+$radius-xl: 16px;           // 大型卡 / Modal
+$radius-pill: 32px;         // 中等 pill(category strip / pill button,对应 `{rounded.pill}`,新增)
+$radius-full: 9999px;       // 头像 / 圆形 icon / 搜索 orb
+$radius-image: 24px;        // D25:Hero / Feature 大图(参考站对齐 rounded-3xl)
+
+// -------- 阴影 --------
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+$shadow-base: 0 2px 8px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+$shadow-brand: 0 4px 16px rgba(172, 114, 44, 0.32);  // 主色光晕(D29 gold)
+$shadow-card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); // D25:卡片 hover 浮起
+$shadow-image-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25); // D25:Hero / Feature 大图阴影
+$ring-focus: 0 0 0 3px rgba(172, 114, 44, 0.18);     // focus ring(D29 gold)
+$scrim-modal: rgba(0, 0, 0, 0.5);                    // 模态遮罩(DESIGN-mandarly-v1 `{colors.scrim}` 50%)
+
+// -------- 断点(响应式 PC + H5)--------
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-laptop: 1024px;
+$bp-desktop: 1280px;
+
+// =============================================================================
+// v2 TOKEN(D26,2026-05-21)— 视觉契约升级,主调 Anthropic + 技法 Stripe
+// 来源:docs/frontend/visual-reference/DESIGN-mandarly-v2.md
+//
+// 与 v1 关系:**v2 token 追加,v1 token 不动**;新组件优先用 v2,旧组件保持 v1 不强制迁。
+// =============================================================================
+
+// -------- v2 米色暖底系(教育温度核心,借 Anthropic)--------
+$canvas-warm: #FAF9F5;             // 主背景(温暖一点替代纯白)
+$surface-soft-warm: #F5F0E8;       // 软米色 section bg
+$surface-card-warm: #EFE9DE;       // 米色卡片底
+$surface-cream-strong: #E8E0D2;    // 米色重底(callout / hero band)
+
+// -------- v2 辅助 accent(借 Anthropic + Stripe)--------
+$accent-teal: #5DB8A6;             // 薄荷绿(成功 / 教师徽章 / 学习成果)
+$accent-amber: #E8A55A;            // 琥珀(评分 / 5 星 / 推荐徽章备用)
+$accent-coral: #CC785C;            // 暖珊瑚(Hero 渐变叠加 / 装饰)
+$accent-purple: #9333EA;           // 紫(推荐徽章,沿用 D25)
+
+// -------- v2 暗色面(用于 hero 内 dark mockup / 代码块)--------
+$surface-dark: #181715;
+$surface-dark-elevated: #252320;
+$surface-dark-soft: #1F1E1B;
+$on-dark: #FAF9F5;                 // 暗底上的文字(米色,比纯白温暖)
+$on-dark-soft: #A09D96;
+
+// -------- v2 精细文字(Anthropic 命名)--------
+$ink: #141413;                     // 主文(更深近黑)
+$body-strong: #252523;
+$body: #3D3D3A;
+$muted: #6C6A64;
+$muted-soft: #8E8B82;
+$hairline: #E6DFD8;                // 米色描边(协调米底)
+$hairline-soft: #EBE6DF;
+
+// -------- v2 字体栈(serif display + humanist sans)--------
+$font-display:
+  "Copernicus", "Tiempos Headline", "Source Serif Pro",
+  Georgia, "Times New Roman", serif;
+
+$font-sans:
+  "StyreneB", "Inter", -apple-system, BlinkMacSystemFont,
+  'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+  'Noto Sans SC', 'Noto Sans Arabic',
+  Helvetica, Arial, sans-serif;
+
+// -------- v2 字号阶梯(serif display 友好)--------
+$font-size-display-xl: 64px;       // Hero H1(英文 serif)
+$font-size-display-lg: 48px;       // H2 section
+$font-size-display-md: 36px;       // H2 sub
+$font-size-display-sm: 28px;       // H3 卡片标题
+$font-size-title-lg: 22px;
+$font-size-title-md: 18px;
+$font-size-title-sm: 16px;
+$font-size-caption-cap: 12px;      // 大写小标签
+
+// -------- v2 font-weight 阶梯(serif 400 / sans title 500 / body 400)--------
+$font-weight-display: 400;         // Copernicus serif 显示字(细)
+$font-weight-title: 500;           // sans 标题中等
+$font-weight-body: 400;            // body 正常
+
+// -------- v2 line-height + letter-spacing --------
+$lh-display-xl: 1.05;
+$lh-display-lg: 1.10;
+$lh-display-md: 1.15;
+$lh-display-sm: 1.20;
+$lh-title: 1.40;
+$lh-body-loose: 1.55;              // 教育长文本可读性
+
+$ls-display-xl: -1.5px;
+$ls-display-lg: -1.0px;
+$ls-display-md: -0.5px;
+$ls-display-sm: -0.3px;
+$ls-caption-cap: 1.5px;
+
+// -------- v2 间距(加大 section)--------
+$spacing-24: 96px;                 // section padding-block
+$spacing-32: 128px;                // hero padding-block
+
+// -------- v2 圆角扩展 --------
+$radius-2xl: 24px;                 // 已有 $radius-image,这里 alias
+$radius-3xl: 32px;                 // 装饰性大圆角
+
+// -------- v2 多层 elevation 阴影系统(8 档)--------
+$shadow-flat: 0 0 0 1px rgba(0, 0, 0, 0.04);
+
+$shadow-v2-xs: 0 1px 2px rgba(15, 23, 42, 0.06),
+               0 1px 1px rgba(15, 23, 42, 0.03);
+
+$shadow-v2-sm: 0 2px 4px rgba(15, 23, 42, 0.04),
+               0 1px 2px rgba(15, 23, 42, 0.06);
+
+$shadow-v2-md: 0 4px 8px rgba(15, 23, 42, 0.04),
+               0 2px 4px rgba(15, 23, 42, 0.06),
+               inset 0 1px 0 rgba(255, 255, 255, 0.8);   // inset highlight 质感关键
+
+$shadow-v2-lg: 0 12px 24px rgba(15, 23, 42, 0.08),
+               0 4px 8px rgba(15, 23, 42, 0.04),
+               inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+$shadow-v2-xl: 0 24px 48px rgba(15, 23, 42, 0.12),
+               0 8px 16px rgba(15, 23, 42, 0.06);
+
+$shadow-v2-2xl: 0 40px 80px rgba(15, 23, 42, 0.15),
+                0 16px 32px rgba(15, 23, 42, 0.08),
+                0 4px 8px rgba(15, 23, 42, 0.04);
+
+// glow(主色光晕,CTA hover 用)
+$shadow-glow-primary: 0 0 0 4px rgba(172, 114, 44, 0.18),
+                      0 8px 24px rgba(172, 114, 44, 0.25);
+$shadow-glow-teal: 0 0 0 3px rgba(93, 184, 166, 0.20),
+                   0 8px 16px rgba(93, 184, 166, 0.18);
+$shadow-glow-amber: 0 0 0 3px rgba(232, 165, 90, 0.20),
+                    0 8px 16px rgba(232, 165, 90, 0.18);
+
+// -------- v2 atmospheric mesh gradient(Stripe 标志技法)--------
+// Hero 亮色版(米色暖底 + 金色光晕,Stripe 风)— 备用,深色版优先
+$mesh-warm-hero:
+  radial-gradient(at 12% 8%, rgba(172, 114, 44, 0.42) 0%, transparent 45%),
+  radial-gradient(at 85% 12%, rgba(26, 54, 96, 0.18) 0%, transparent 40%),
+  radial-gradient(at 50% 80%, rgba(208, 154, 76, 0.30) 0%, transparent 50%),
+  radial-gradient(at 70% 45%, rgba(232, 165, 90, 0.35) 0%, transparent 55%),
+  linear-gradient(135deg, #F8F2EA 0%, #FFFFFF 52%, #FAF9F5 100%);
+
+// Hero 深色版(D26 默认 — navy 底 + gold 光晕,质感比单 linear gradient 强)
+$mesh-warm-hero-dark:
+  radial-gradient(at 12% 10%, rgba(172, 114, 44, 0.50) 0%, transparent 45%),
+  radial-gradient(at 88% 18%, rgba(208, 154, 76, 0.38) 0%, transparent 42%),
+  radial-gradient(at 78% 78%, rgba(14, 34, 65, 0.72) 0%, transparent 50%),
+  radial-gradient(at 35% 65%, rgba(26, 54, 96, 0.55) 0%, transparent 48%),
+  linear-gradient(135deg, #0E2241 0%, $brand-navy 45%, #244B80 100%);
+
+$mesh-cream-soft:
+  radial-gradient(at 20% 30%, rgba(232, 165, 90, 0.12) 0%, transparent 50%),
+  radial-gradient(at 80% 70%, rgba(204, 120, 92, 0.10) 0%, transparent 55%),
+  linear-gradient(180deg, #FAF9F5 0%, #FFFFFF 100%);
+
+$mesh-bottom-cta:
+  radial-gradient(at 30% 30%, $brand-gold 0%, transparent 60%),
+  radial-gradient(at 70% 70%, $brand-primary-deep 0%, transparent 60%),
+  radial-gradient(at 50% 50%, $brand-navy 0%, #0E2241 100%);
+
+$mesh-login-soft:
+  radial-gradient(at 30% 20%, rgba(172, 114, 44, 0.08) 0%, transparent 55%),
+  radial-gradient(at 80% 80%, rgba(26, 54, 96, 0.08) 0%, transparent 50%),
+  linear-gradient(180deg, #FFFFFF 0%, #FAF9F5 100%);
+
+// -------- v2 noise grain texture(可叠加在 hero / mesh)--------
+$grain-svg: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+
+// -------- v2 motion --------
+$ease-out: cubic-bezier(0.16, 1, 0.30, 1);
+$ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+$ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+$duration-fast: 150ms;
+$duration-base: 250ms;
+$duration-slow: 400ms;
+$duration-slower: 600ms;
+
+// -------- v2 scroll-reveal 全局 fallback --------
+// 防御:如果 IntersectionObserver 没触发(v-if showSection 时序错位 / SSR / 复杂滚动)
+// 1.2s 后强制让所有 scroll-reveal 元素可见,避免空白
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// 应用到所有 scroll-reveal 元素(D26 v2 全局保险,D27 修正类名)
+.feature-cards__item,
+.testimonial-card,
+.rec-card,
+.pkg-card,             // D27 修:PackagePreview 实际类名(非 .package-card)
+.stats-bar__item,      // D27 修:StatsBar 实际类名(非 .stat-card)
+.bottom-cta__inner {
+  animation: reveal-fallback 0s 1.2s forwards;
+}
+
+// 如果 .is-visible / .is-section-visible 已经触发过(IO 提前生效),
+// CSS opacity 1 + transform 0 已经在元素上,fallback 不冲突
+@media (prefers-reduced-motion: reduce) {
+  .feature-cards__item,
+  .testimonial-card,
+  .rec-card,
+  .pkg-card,
+  .stats-bar__item,
+  .bottom-cta__inner {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+// -------- z-index 层级 --------
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+$z-notification: 1080;
+
+// =============================================================================
+// 暴露 CSS Variables(供 vue 模板 :style 内联 / 第三方组件覆盖用)
+// =============================================================================
+:root {
+  // 品牌色
+  --color-primary: #{$brand-primary};
+  --color-primary-deep: #{$brand-primary-deep};
+  --color-primary-light: #{$brand-primary-light};
+  --color-primary-soft: #{$brand-primary-soft};
+  --color-primary-disabled: #{$brand-primary-disabled};
+
+  // 文字
+  --color-text-primary: #{$color-text-primary};
+  --color-text-body: #{$color-text-body};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-tertiary: #{$color-text-tertiary};
+  --color-text-inverse: #{$color-text-inverse};
+  --btn-primary-text: #{$btn-primary-text};
+
+  // 边框 / 背景
+  --color-border: #{$color-border};
+  --color-border-strong: #{$color-border-strong};
+  --color-bg-page: #{$color-bg-page};
+  --color-bg-card: #{$color-bg-card};
+  --color-bg-strong: #{$color-bg-strong};
+
+  // 状态
+  --color-success: #{$color-success};
+  --color-warning: #{$color-warning};
+  --color-error: #{$color-error};
+  --color-error-soft: #{$color-error-soft};
+  --color-info: #{$color-info};
+
+  // 字体
+  --font-family-base: #{$font-family-base};
+  --font-family-heading-en: #{$font-family-heading-en};
+
+  // 圆角
+  --radius-base: #{$radius-base};
+  --radius-lg: #{$radius-lg};
+  --radius-card: #{$radius-card};
+  --radius-pill: #{$radius-pill};
+  --radius-full: #{$radius-full};
+
+  // 阴影 / focus
+  --shadow-base: #{$shadow-base};
+  --shadow-md: #{$shadow-md};
+  --shadow-brand: #{$shadow-brand};
+  --ring-focus: #{$ring-focus};
+}
+
+// =============================================================================
+// Element Plus 主色覆盖(下一轮接入,先占位说明)
+// =============================================================================
+// 在 vite.config.js 通过 SCSS 预处理器 additionalData 注入,或者
+// import 'element-plus/theme-chalk/src/index.scss' 之前 @use 本文件并 with($colors: (...))
+// 详见下一轮 admin / app 主题接入实施

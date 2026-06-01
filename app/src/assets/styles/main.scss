@@ -1,0 +1,26 @@
+// brand namespace 已通过 vite.config.js css.preprocessorOptions.scss.additionalData
+// 全局注入,本文件直接使用 brand.$xxx / var(--xxx) 即可
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-base);
+  font-size: brand.$font-size-base;
+  line-height: brand.$line-height-base;
+  -webkit-font-smoothing: antialiased;
+  color: var(--color-text-primary);
+  background: var(--color-bg-page);
+}
+
+a {
+  color: var(--color-primary-deep);
+  text-decoration: none;
+  &:hover { color: var(--color-primary); }
+}
+
+// RTL 基础支持(下一轮接入完整 RTL 切换逻辑)
+html[dir="rtl"] body {
+  text-align: right;
+}

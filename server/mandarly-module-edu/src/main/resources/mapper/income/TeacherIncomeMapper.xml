@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mandarly.boot.module.edu.dal.mysql.income.TeacherIncomeMapper">
+
+    <select id="aggregateByTeachers" resultType="java.util.Map">
+        SELECT teacher_id,
+               COALESCE(SUM(CASE WHEN settled_at &lt;= #{frozenThreshold} THEN amount_usd ELSE 0 END), 0) as available_usd,
+               COALESCE(SUM(CASE WHEN settled_at &gt;  #{frozenThreshold} THEN amount_usd ELSE 0 END), 0) as frozen_t7_usd,
+               COALESCE(SUM(amount_usd), 0) as total_earned_usd
+        FROM teacher_income
+        WHERE deleted = 0
+          AND teacher_id IN
+          <foreach collection="teacherIds" item="id" open="(" separator="," close=")">#{id}</foreach>
+        GROUP BY teacher_id
+    </select>
+
+    <!--
+        admin 收入流水分页(JOIN system_users / course_order / student_package / package)
+        - system_users 取 teacher email 和 nickname
+        - course_order.student_package_id → student_package.package_id → package.name_i18n_code
+        注: package 无 name 字段时用 name_i18n_code 替代展示
+    -->
+    <select id="selectPageWithJoin"
+            resultType="com.mandarly.boot.module.edu.controller.admin.income.vo.TeacherIncomeRespVO">
+        SELECT
+            ti.id,
+            ti.teacher_id       AS teacherId,
+            su.email            AS teacherEmail,
+            su.nickname         AS teacherName,
+            ti.course_order_id  AS courseOrderId,
+            ti.refund_id        AS refundId,
+            p.name_i18n_code    AS packageName,
+            ti.amount_usd       AS amountUsd,
+            ti.type,
+            ti.settled_at       AS settledAt,
+            ti.create_time      AS createTime
+        FROM teacher_income ti
+        LEFT JOIN system_users su
+               ON su.id = ti.teacher_id AND su.deleted = 0
+        LEFT JOIN course_order co
+               ON co.id = ti.course_order_id AND co.deleted = 0
+        LEFT JOIN student_package sp
+               ON sp.id = co.student_package_id AND sp.deleted = 0
+        LEFT JOIN package p
+               ON p.id = sp.package_id AND p.deleted = 0
+        WHERE ti.deleted = 0
+        <if test="req.teacherId != null">
+            AND ti.teacher_id = #{req.teacherId}
+        </if>
+        <if test="req.type != null and req.type != ''">
+            AND ti.type = #{req.type}
+        </if>
+        <if test="req.settledAtFrom != null">
+            AND ti.settled_at &gt;= #{req.settledAtFrom}
+        </if>
+        <if test="req.settledAtTo != null">
+            AND ti.settled_at &lt;= #{req.settledAtTo}
+        </if>
+        ORDER BY ti.create_time DESC
+    </select>
+
+</mapper>

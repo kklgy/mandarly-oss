@@ -1,0 +1,4 @@
+com.mandarly.boot.framework.idempotent.config.MandarlyIdempotentConfiguration
+com.mandarly.boot.framework.lock4j.config.MandarlyLock4jConfiguration
+com.mandarly.boot.framework.ratelimiter.config.MandarlyRateLimiterConfiguration
+com.mandarly.boot.framework.signature.config.MandarlyApiSignatureAutoConfiguration
